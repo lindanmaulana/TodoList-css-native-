@@ -20,11 +20,13 @@ const CreateNotes = () => {
       if (value.length > 50) return alert("Title maksimal 50 character");
     }
 
+    const timestamps = new Date().toISOString()
+
     setCreateData({
       ...createData,
-      id: new Date().toISOString(),
+      id: timestamps,
       [name]: value,
-      createdAt: new Date().toISOString(),
+      createdAt: timestamps,
       archived: false,
     });
   };
