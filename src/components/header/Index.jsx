@@ -1,18 +1,13 @@
-import { useDispatch } from "react-redux";
 import "./header.css";
-import {
-  handleResetSearchNotes,
-  handleSearchNotes,
-} from "../../redux/slices/notesSlice";
-const Header = () => {
-  const dispatch = useDispatch();
+const Header = (props) => {
+  const { handle } = props;
 
   const handleSearch = (e) => {
     const values = e.target.value;
     if (values !== "") {
-      dispatch(handleSearchNotes(e.target.value));
+      handle.handleSearchNotes(e.target.value);
     } else {
-      dispatch(handleResetSearchNotes());
+      handle.handleResetSearchNotes();
     }
   };
   return (

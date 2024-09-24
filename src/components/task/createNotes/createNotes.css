@@ -13,7 +13,6 @@
   align-items: center;
   margin-bottom: 20px;
   min-height: 50px;
-  color: white;
 
 }
 
@@ -24,6 +23,11 @@
 .amount-character {
   align-self: flex-end;
   font-size: 12px;
+  color: white;
+}
+
+.amount-character-maximum {
+  color: red !important;
 }
 
 .create-box {

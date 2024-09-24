@@ -1,8 +1,7 @@
 import { useState } from "react";
-import { useDispatch } from "react-redux";
-import { handleAddNotes } from "../../../redux/slices/notesSlice";
 import "./createNotes.css";
-const CreateNotes = () => {
+const CreateNotes = (props) => {
+  const { handleAddNotes } = props;
   const [createData, setCreateData] = useState({
     id: 1,
     title: "",
@@ -11,16 +10,22 @@ const CreateNotes = () => {
     archived: false,
   });
   const [amountCharacter, setAmountCharacter] = useState(50);
-  const dispatch = useDispatch();
+  const [isMaximum, setIsMaximum] = useState(false);
+
   const handleSetNotes = (e) => {
     const { name, value } = e.target;
 
     if (name === "title") {
       setAmountCharacter(50 - value.length);
-      if (value.length > 50) return alert("Title maksimal 50 character");
+      if (value.length > 50) {
+        setIsMaximum(true);
+        return;
+      } else {
+        setIsMaximum(false);
+      }
     }
 
-    const timestamps = new Date().toISOString()
+    const timestamps = new Date().toISOString();
 
     setCreateData({
       ...createData,
@@ -33,7 +38,7 @@ const CreateNotes = () => {
 
   const handleCreateNotes = () => {
     if (createData.title !== "" && createData.body !== "") {
-      dispatch(handleAddNotes(createData));
+      handleAddNotes(createData);
     } else if (createData.title === "") {
       alert("Title tidak boleh kosong!");
     } else if (createData.body === "") {
@@ -44,18 +49,26 @@ const CreateNotes = () => {
       title: "",
       body: "",
     });
-    setAmountCharacter(50)
+    setAmountCharacter(50);
   };
   return (
     <div className="create-notes">
       <div className="create-header">
         <h2 className="title">Buat Catatan</h2>
-        <p className="amount-character">Sisa karakter {amountCharacter}</p>
+        <p
+          className={`amount-character ${
+            isMaximum ? "amount-character-maximum" : ""
+          }`}
+        >
+          Sisa karakter {amountCharacter}
+        </p>
       </div>
       <div className="create-box">
         <input
           type="text"
-          className="create-title"
+          className={`create-title ${
+            isMaximum ? "amount-character-maximum" : ""
+          }`}
           name="title"
           value={createData.title}
           placeholder="Masukan judul catatan...."
