@@ -53,8 +53,17 @@ const notesSlice = createSlice({
   initialState,
   reducers: {
     handleAddNotes: (state, action) => {
-      if (state.notes.length > 0) {
-        state.notes.push(action.payload);
+      if (state.notes) {
+        const check = state.notes.some(
+          (fill) =>
+            fill.title.toLowerCase() === action.payload.title.toLowerCase()
+        );
+
+        if (!check) {
+          state.notes.push(action.payload);
+        } else {
+          alert("Title duplicated");
+        }
       } else {
         state.notes = action.payload;
       }
@@ -63,12 +72,9 @@ const notesSlice = createSlice({
     handleDeleteNotes: (state, action) => {
       if (state.notes) {
         state.notes = state.notes.filter((note) => note.id !== action.payload);
-      }
-
-      if (state.search) {
         state.search = state.search.filter(
           (note) => note.id !== action.payload
-        );  
+        );
       }
     },
 
@@ -118,6 +124,10 @@ const notesSlice = createSlice({
 
       if (action.payload === "") state.search = [];
     },
+
+    handleResetSearchNotes: (state) => {
+      state.search = [];
+    },
   },
 });
 
@@ -127,5 +137,6 @@ export const {
   handleArchivedNotes,
   handleUnArchivedNotes,
   handleSearchNotes,
+  handleResetSearchNotes,
 } = notesSlice.actions;
 export default notesSlice.reducer;

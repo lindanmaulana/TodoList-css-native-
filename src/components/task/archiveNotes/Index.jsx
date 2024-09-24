@@ -10,7 +10,8 @@ import {
 const ArchiveNotes = () => {
   const dispatch = useDispatch();
   const data = useSelectorNotes();
-  console.log({ data });
+  console.log({ data: data.notes });
+
   const renderData = data.search.length > 0 ? data.search : data.notes;
 
   const handleDelete = (id) => {
@@ -25,34 +26,39 @@ const ArchiveNotes = () => {
     <div className="archive-notes">
       <h2 className="title">Archive Notes</h2>
       <div className="notes-box">
-        {renderData
-          ?.filter((fill) => fill.archived === true)
-          .map((values) => {
-            const formatCreatedAt = showFormattedDate(values.createdAt);
-            return (
-              <div className="notes-card" key={values.id}>
-                <div className="notes-card-content">
-                  <h3 className="notes-card-title">{values.title}</h3>
-                  <h5 className="notes-card-date">{formatCreatedAt}</h5>
-                  <p className="notes-card-body">{values.body}</p>
+        {renderData && renderData.filter(fill => fill.archived === true).length > 0 ? (
+          renderData?.filter((fill) => fill.archived === true)
+            .map((values) => {
+              const formatCreatedAt = showFormattedDate(values.createdAt);
+              return (
+                <div className="notes-card" key={values.id}>
+                  <div className="notes-card-content">
+                    <h3 className="notes-card-title">{values.title}</h3>
+                    <h5 className="notes-card-date">{formatCreatedAt}</h5>
+                    <p className="notes-card-body">{values.body}</p>
+                  </div>
+                  <div className="notes-card-button">
+                    <button
+                      className="notes-card-button-archived"
+                      onClick={() => handleUnArchived(values.id)}
+                    >
+                      UnArchive
+                    </button>
+                    <button
+                      className="notes-card-button-delete"
+                      onClick={() => handleDelete(values.id)}
+                    >
+                      Delete
+                    </button>
+                  </div>
                 </div>
-                <div className="notes-card-button">
-                  <button
-                    className="notes-card-button-archived"
-                    onClick={() => handleUnArchived(values.id)}
-                  >
-                    UnArchive
-                  </button>
-                  <button
-                    className="notes-card-button-delete"
-                    onClick={() => handleDelete(values.id)}
-                  >
-                    Delete
-                  </button>
-                </div>
-              </div>
-            );
-          })}
+              );
+            })
+        ) : (
+          <div className="notes-blank">
+            <h4 className="notes-blank-text">Tidak ada catatan</h4>
+          </div>
+        )}
       </div>
     </div>
   );
