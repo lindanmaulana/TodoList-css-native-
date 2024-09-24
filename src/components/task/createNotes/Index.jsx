@@ -1,8 +1,7 @@
 import { useState } from "react";
-import "./createNotes.css";
-import useSelectorNotes from "../../../hooks/useSelectorNotes";
 import { useDispatch } from "react-redux";
 import { handleAddNotes } from "../../../redux/slices/notesSlice";
+import "./createNotes.css";
 const CreateNotes = () => {
   const [createData, setCreateData] = useState({
     id: 1,
