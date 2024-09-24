@@ -13,8 +13,6 @@ const CreateNotes = () => {
   });
   const [amountCharacter, setAmountCharacter] = useState(50);
   const dispatch = useDispatch();
-  const data = useSelectorNotes();
-
   const handleSetNotes = (e) => {
     const { name, value } = e.target;
 
@@ -25,7 +23,7 @@ const CreateNotes = () => {
 
     setCreateData({
       ...createData,
-      id: data.notes.length > 0 ? data.notes[data.notes.length - 1].id + 1 : 1,
+      id: new Date().toISOString(),
       [name]: value,
       createdAt: new Date().toISOString(),
       archived: false,
