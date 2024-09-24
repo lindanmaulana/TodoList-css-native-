@@ -1,0 +1,23 @@
+.notes-header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 15px;
+  border-bottom: 1px solid white;
+}
+
+.notes-header-title {
+  font-size: 25px;
+  color: white;
+}
+
+.notes-header-search {
+  min-width: 300px;
+  font-size: 14px;
+  border-radius: 2px;
+  background-color: transparent;
+  border: 1px solid white;
+  padding: 5px 0 5px 5px;
+  color: white;
+}

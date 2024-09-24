@@ -1,0 +1,63 @@
+.create-notes {
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+}
+
+.create-header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  min-height: 50px;
+  color: white;
+
+}
+
+.title {
+  font-size: 20px;
+}
+
+.amount-character {
+  align-self: flex-end;
+  font-size: 12px;
+}
+
+.create-box {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.create-title {
+  border-radius: 2px;
+  border: 1px solid white;
+  background-color: transparent;
+  padding: 5px 0 5px 5px;
+  font-size: 14px;
+  color: white;
+}
+
+.create-body {
+  border-radius: 2px;
+  min-height: 200px;
+  border: 1px solid white;
+  background-color: transparent;
+  padding: 5px 0 5px 5px;
+  font-size: 14px;
+  color: white;
+}
+
+.create-button {
+  border-radius: 2px;
+  border: 1px solid white;
+  background-color: transparent;
+  padding: 5px;
+  color: white;
+  font-size: 14px;
+  background-color: green;
+}

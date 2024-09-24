@@ -1,0 +1,86 @@
+.notes {
+    padding: 50px 0;
+}
+
+.container {
+    max-width: 1120px;
+    margin-right: auto;
+    margin-left: auto;
+  }
+  
+  .wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 60px;
+  }
+  
+  .title {
+    margin-bottom: 5px;
+    font-size: 20px;
+    color: white;
+  }
+  
+  .notes-box {
+    display: grid;
+    grid-template-columns: 250px 250px 250px 250px;
+    gap: 10px;
+  }
+  
+  .notes-card {
+    border: 1px solid white;
+    box-shadow: 3px 10px 10px black;
+    border-radius: 5px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: start;
+    gap: 10px;
+    height: 300px;
+  }
+  
+  .notes-card-title {
+    font-size: 17px;
+    color: white;
+    margin-bottom: 5px;
+  }
+  
+  .notes-card-date {
+    margin-bottom: 10px;
+    color: rgba(255, 255, 255, 0.3);
+    font-size: 12px;
+  }
+  
+  .notes-card-body {
+    color: white;
+    font-size: 13px;
+    line-height: 18px;
+  }
+  
+  .notes-card-button {
+    width: 100%;
+    display: grid;
+    grid-template-columns: auto auto;
+  }
+  
+  .notes-card-button-archived {
+    border-radius: 2px;
+    background-color: blue;
+    opacity: 50%;
+    border: none;
+    color: white;
+  }
+  
+  .notes-card-button-delete {
+      border-radius: 2px;
+      background-color: red;
+      opacity: 50%;
+      border: none;
+      color: white;
+  }
+  
+  .notes-card-button-archived:hover,.notes-card-button-delete:hover {
+      opacity: 100%;
+  }
